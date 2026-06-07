@@ -377,6 +377,9 @@ Paiement a la livraison');
   document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
   const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }); }, { threshold: 0.08 });
   document.querySelectorAll('.product-card,.price-row,.livraison-card,.about-content,.contact-inner,.about-visual').forEach((el,i) => { el.style.opacity='0'; el.style.transform='translateY(22px)'; el.style.transition='opacity .7s '+i*.04+'s ease,transform .7s '+i*.04+'s ease'; observer.observe(el); });
+  // Fix: ensure modal is always visible when open, regardless of observer
+  document.getElementById('modalOverlay').style.opacity = '1';
+  document.getElementById('modalOverlay').style.transform = 'none';
 </script>
 </body>
 </html>
